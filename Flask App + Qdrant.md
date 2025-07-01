@@ -49,10 +49,16 @@ Access web UI at http://localhost:6333/dashboard
 
 ### 🔹 3. **Optional: Run in background**
 
-To keep Qdrant running in the background:
+To keep Qdrant running in the background: with storage
 
 ```bash
 docker run -d -p 6333:6333 -p 6334:6334 qdrant/qdrant
+docker run -d \
+  -p 6333:6333 -p 6334:6334 \
+  -v $(pwd)/qdrant_data:/qdrant/storage \
+  --name qdrant \
+  qdrant/qdrant
+
 ```
 
 ---
@@ -330,10 +336,16 @@ qdrant-client
 
 ---
 
-### 🧠 Step 2: Start Qdrant via Docker
+### 🧠 Step 2: Start Qdrant via Docker / with storage
 
 ```bash
 docker run -p 6333:6333 -p 6334:6334 qdrant/qdrant
+docker run -d \
+  -p 6333:6333 -p 6334:6334 \
+  -v $(pwd)/qdrant_data:/qdrant/storage \
+  --name qdrant \
+  qdrant/qdrant
+
 ```
 
 Access Qdrant dashboard:
